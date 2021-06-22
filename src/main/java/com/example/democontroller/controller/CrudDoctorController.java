@@ -1,6 +1,7 @@
 package com.example.democontroller.controller;
 
 import com.example.democontroller.model.Doctor;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,12 +15,11 @@ public class CrudDoctorController {
 
     //create
     @RequestMapping("/add_doc")
-    public String add(){
+    public String add(@RequestBody Doctor doc){
 
-        Doctor doc1=new Doctor("Dr. Anand",65,"Heart");
-        docList.add(doc1);
+        docList.add(doc);
 
-        return doc1.getName() + " Added Successfully ...";
+        return doc.getName() + " Added Successfully ...";
     }
 
     //get
