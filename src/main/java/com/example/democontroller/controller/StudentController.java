@@ -1,11 +1,12 @@
 package com.example.democontroller.controller;
 
 import com.example.democontroller.model.Student;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.Stream;
 
 @RestController
 public class StudentController {
@@ -13,15 +14,18 @@ public class StudentController {
     ArrayList<Student> list=new ArrayList<>();
 
     @RequestMapping("/addStudent")
-    public String addStudent(){
-        Student std=new Student("munesh",23,"agra");
-        list.add(std);
+    public String addStudent(@RequestBody Student student){
+        list.add(student);
         return "Student details added...";
     }
 
-    @RequestMapping("/getStudent")
-    public ArrayList getStudent(){
+
+    @RequestMapping("/dispStudent")
+    public ArrayList<Student> dispStudent() {
+
         return list;
+
+
     }
 
     @RequestMapping("/updateStudent")
